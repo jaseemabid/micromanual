@@ -38,7 +38,7 @@
             ((label evcond
                 (lambda (u a)
                  (cond ((eval (caar u) a)
-                     ((eval (cadar u) a))
+                        (eval (cadar u) a))
                      (t (evcond (cdr u) a)))))
                 (cdr e) a))
             (t (eval (cons (cdr ((label assoc
@@ -64,7 +64,7 @@
                      (t (cons (cons (car u) (car v))
                          (pairup (cdr u) (cdr v)))))))
               (cadar e)
-             (label evlis
+             ((label evlis
                  (lambda (u a)
                   (cond ((null u) nil)
                      (t (cons (eval (car u) a)
