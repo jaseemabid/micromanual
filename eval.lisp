@@ -6,8 +6,8 @@
            (t (cdr ((label assoc
                    (lambda (e a)
                     (cond ((null a) nil)
-                       ((eq e caar a)) (car a)
-                       (t (assoc e (cdr a)))))
+                       ((eq e (caar a)) (car a))
+                       (t (assoc e (cdr a))))))
                    e
                    a)))))
         ((atom (car e))
@@ -38,7 +38,7 @@
             ((label evcond
                 (lambda (u a)
                  (cond ((eval (caar u) a)
-                     ((eval (cadar u) a))
+                        (eval (cadar u) a))
                      (t (evcond (cdr u) a)))))
                 (cdr e) a))
             (t (eval (cons (cdr ((label assoc
@@ -63,8 +63,8 @@
                   (cond ((null u) nil)
                      (t (cons (cons (car u) (car v))
                          (pairup (cdr u) (cdr v)))))))
-
-             (label evlis
+              (cadar e)
+             ((label evlis
                  (lambda (u a)
                   (cond ((null u) nil)
                      (t (cons (eval (car u) a)
@@ -73,4 +73,5 @@
              a))
             a)))
         ((eq (caar e) (quote label))
-         (eval (cons (caddar e) (cdr e))) a)))))
+         (eval (cons (caddar e) (cdr e))
+             (cons (cons (cadar e) (car e)) a))))))
