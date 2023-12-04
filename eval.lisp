@@ -73,4 +73,5 @@
              a))
             a)))
         ((eq (caar e) (quote label))
-         (eval (cons (caddar e) (cdr e))) a)))))
+         (eval (cons (caddar e) (cdr e))
+             (cons (cons (cadar e) (car e)) a))))))
