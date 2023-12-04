@@ -6,8 +6,8 @@
            (t (cdr ((label assoc
                    (lambda (e a)
                     (cond ((null a) nil)
-                       ((eq e caar a)) (car a)
-                       (t (assoc e (cdr a)))))
+                       ((eq e (caar a)) (car a))
+                       (t (assoc e (cdr a))))))
                    e
                    a)))))
         ((atom (car e))
