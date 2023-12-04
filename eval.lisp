@@ -63,7 +63,7 @@
                   (cond ((null u) nil)
                      (t (cons (cons (car u) (car v))
                          (pairup (cdr u) (cdr v)))))))
-
+              (cadar e)
              (label evlis
                  (lambda (u a)
                   (cond ((null u) nil)
